@@ -1,0 +1,19 @@
+- Puxar agendamentos realizado
+- Criar agendamentos - em andamento
+- Criar regras 
+- Buscar agendamento por título
+
+
+
+NÃO PODE:
+ 1º regra: Ter o horário final menor que o horário de início; FEITA! NOTIFICAÇÕES PARA O USUÁRIO ATIVAS
+
+ 2 º regra: Acontecer no mesmo horário que outro agendamento; FEITA NOTIFICAÇÕES PARA O USUÁRIO ATIVAS
+
+ 3 º regra: Não deve ser possível criar um agendamento no momento que um agendamento estiver ocorrendo,
+Ex: Existe um agendamento começando no dia 19/02 às 14:00 e terminando às 14:15.
+Não deve ser possível criar outro agendamento começando às 14:10 e terminando às
+14:20.
+
+
+
