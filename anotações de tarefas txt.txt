@@ -1,8 +1,13 @@
 - Puxar agendamentos realizado
-- Criar agendamentos - em andamento
-- Criar regras 
-- Buscar agendamento por título
+- Criar agendamentos - realizado
+- Criar regras :
+ [
+    - Não pode haver horário repetido Realizado ✔️
+    - Horário final menor que horário de início ✔️
+    - Não deve ser possível criar agendamento no momento em que outro estiver ocorrendo - Em andamento ⚠️
+    - Buscar agendamento por título ⚠️
 
+ ]
 
 
 NÃO PODE:

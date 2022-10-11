@@ -10,4 +10,5 @@ export interface AppointmentI{
     error?:string | boolean;
     errorExist?:string | boolean;
     message?:string;
+
 } 

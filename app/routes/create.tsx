@@ -69,13 +69,8 @@ export default function Create(){
             onClick={() =>navigate('/')} >
                 Voltar
             </button>
-            
-           
-           
-            
-             <Form className="flex justify-center p-10 items-center mx-auto h-screen" method="post">
-                    
-                    <label htmlFor="title">
+             <Form className="flex justify-center  items-center mx-auto h-screen" method="post">
+                    <label className="m-0" htmlFor="title">
                         Título
                     </label>
                     
