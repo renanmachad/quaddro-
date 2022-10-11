@@ -1,3 +1,15 @@
-export default async function SearchAppointment(){
-    return 'appoint here';
+import { supabase } from "~/client/client";
+import type SearchI from "~/interfaces/search";
+import type { AppointmentI } from './../interfaces/appointment';
+
+
+export default async function SearchAppointment(title?:string| undefined | null): Promise<SearchI[] | SearchI>{
+    const { data,  } = await supabase.from<AppointmentI>('appointments').select('*').eq('title', `${title!}`);
+    
+    
+
+    return{
+       
+        data:data
+    }
 }
