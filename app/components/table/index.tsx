@@ -2,8 +2,6 @@
 import {useState,useEffect} from 'react';
 import FormatDate from '~/utils/date_format';
 import type { AppointmentI } from '~/interfaces/appointment';
-import { DeleteAppointments } from '~/services/delete_appointements';
-import { toast } from 'react-hot-toast';
 import ContainerCenter from '../Container';
 import DeleteButton from '../ButtonDelete/indext';
 import FilterSmallValue from '~/utils/filter_small_value';
@@ -19,14 +17,13 @@ const  ListComponent=({content}:any)=>{
     const [list,setList] = useState<AppointmentI[]>(content);
 
     useEffect(()=>  {
-        console.log('array original',content)
-        
+        console.log(content)
         setList(content);
     },[list,content])
 
     const UpdateList= ()=>{
         const new_list =FilterSmallValue(list);
-        console.log('novo array',new_list);
+    
 
         setList(new_list);
     }
@@ -41,13 +38,13 @@ const  ListComponent=({content}:any)=>{
             </ContainerCenter>
         ):
         <>
-        <button className="mb-11" onClick={UpdateList}>
+        <button className="mt-10 mb-11" onClick={UpdateList}>
             Início de agendamento mais recente
         </button>
         <button className="mb-11">
             Fim de agendamento mais antigo
         </button>
-        <div className='overflow-x-auto relative pt-10 h-full'>
+        <div className='overflow-x-auto relative pt-10 h-full min-h-screen'>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -62,9 +59,6 @@ const  ListComponent=({content}:any)=>{
                         </th>
                         <th className="px-6 py-3">
                             Fim agendamento
-                        </th>
-                        <th className="px-6 py-3">
-                            Atualizado em
                         </th>
                         <th className="px-6 py-3">
                             Criado em
@@ -91,9 +85,6 @@ const  ListComponent=({content}:any)=>{
                             </td>
                             <td className="px-6 py-4">
                                 {FormatDate(content.schedule_end!)}
-                            </td>
-                            <td className="py4-px-6">
-                                {FormatDate(content.updated_at!)}
                             </td>
                             <td className="px-4 py-6">
                                 {FormatDate(content.created_at!)}

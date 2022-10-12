@@ -1,17 +1,28 @@
 import type { AppointmentI } from "~/interfaces/appointment";
+import { ValidateRangeAppointment } from "~/utils/validate_range";
 import ValidatorAppointment from "~/utils/validator";
 import {
     supabase
 } from '../client/client';
 
-export async function  CreateAppointments({title,schedule_start,schedule_end}:AppointmentI){    
+export async function  CreateAppointments({title,schedule_start,schedule_end}:{
+    title:string,
+    schedule_start:string,
+    schedule_end:string
+}){    
 
-    const { message, error:errorExist }=ValidatorAppointment({
-        schedule_start,
-        schedule_end
-    });
 
-   
+    const { message, error:errorExist }= ValidatorAppointment(schedule_start,schedule_end);
+
+    const {valid, alert}= await ValidateRangeAppointment(schedule_start);
+
+    if(valid===true){
+        return {
+            errorExist:valid,
+            message:alert
+        }
+    }
+    
     if(errorExist===true){
         return{
             errorExist,message

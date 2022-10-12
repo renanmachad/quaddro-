@@ -20,7 +20,7 @@ export default function Index() {
       setAppointments(data);
       if(error) setError(error);
     } 
-    Load()
+    Load();
   },[]);
 
   return (

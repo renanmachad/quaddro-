@@ -22,18 +22,13 @@ export const  action= async ({ request }:ActionFunction)=> {
      * @return - name, schedule_start, schedule_end {JSON}
      */
     const form = await request.formData();
-
     const { data ,errorExist, message} = await CreateAppointments({
-        title:form.get("title"),
-        schedule_start:form.get("schedule_start"),
-        schedule_end: form.get("schedule_end")
+        title:form.get('title'),
+        schedule_start:form.get('schedule_start'),
+        schedule_end:form.get('schedule_end')
     });
-
-  
-
-
+    console.log(errorExist, message)
     if(errorExist===true ) return json({ message, error:true})
-
   
     return json({ message:"Cadastrado com sucesso", error:false});
 }
@@ -44,17 +39,10 @@ export default function Create(){
    
     const data =  useActionData();
    
-  
-    
     // handle error in submit
     if(data?.error ===true){
         toast.error(data?.message);
-        setTimeout(function(){
-            window.location.reload();
-        },3000)
-        window.location.reload();
     } 
-
 
     // if not have error, notify user
     if(data?.error===false){
@@ -62,8 +50,6 @@ export default function Create(){
         setTimeout(function(){
             window.location.reload();
         },3000)
-        
-            
     }
     
     return(

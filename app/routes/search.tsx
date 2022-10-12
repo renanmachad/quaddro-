@@ -24,8 +24,6 @@ export default function Search(){
     let appointment= useLoaderData<AppointmentI[]>();
     
     const [search,setSearch] = useState<string>(useSearchParams()[0].get("title")??"");
-
-    console.log(appointment)
    
     return(
         <ContainerCenter>
