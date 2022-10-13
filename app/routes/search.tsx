@@ -14,7 +14,7 @@ export let  loader:LoaderFunction= async({request})=>{
     const searchParams = new URL(request.url).searchParams.get('title');
     
     const { data }= await SearchAppointment(searchParams);
-   
+   console.log(data)
 
     return json(data);
 }
