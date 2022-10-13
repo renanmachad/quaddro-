@@ -7,9 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-  useLoaderData,
 } from "@remix-run/react";
-import { json } from "@remix-run/node";
 import styles from './styles/app.css';
 import { Toaster } from 'react-hot-toast'
 
@@ -18,14 +16,7 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }]
 }
 
-export async function loader(){
-  return json({
-    ENV:{
-        SUPABASE_URL: process.env.SUPABASE_URL,
-        SUPABASE_TOKEN: process.env.SUPABASE_TOKEN,
-    }
-  });
-}
+
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -37,7 +28,7 @@ export const meta: MetaFunction = () => ({
 
 
 export default function App() {
-  const { ENV } = useLoaderData();
+  
   return (
     <html lang="en">
       <head>
@@ -45,9 +36,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-        
-          
           <Outlet />
+         
           <Toaster/>
           <ScrollRestoration />
 
@@ -86,7 +76,7 @@ function Document({
 
 function Layout({children}:React.PropsWithChildren<{}>){
     return(
-      <article>{children}</article>
+      <article className="flex items-center justify-center ">{children}</article>
     )
 }
 
@@ -98,7 +88,9 @@ export function CatchBoundary(){
     case 404:
       message=<p> Essa página não existe no site!Porfavor volte</p>
       break;
-    
+    case 500:
+      message= <p>Um erro ocorreu com o site, aguarde!</p>
+      break;
     default:
       throw new Error(caught.data || caught.statusText)
   }

@@ -1,4 +1,4 @@
-import type { SupabaseScript } from "./client";
+
 
 declare global{
     interface Window {
@@ -6,7 +6,6 @@ declare global{
             SUPABASE_URL:string;
             SUPABASE_TOKEN:string;
         },
-        supabase?:SupabaseScript;
     }
 }
 

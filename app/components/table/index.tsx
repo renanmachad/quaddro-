@@ -7,7 +7,7 @@ import DeleteButton from '../ButtonDelete/indext';
 
 
 const  ListComponent=({content}:any)=>{
-    
+  
     /**
      * Salvei o conteúdo que vem das props em um state
      * porquê eu vou precisar filtra-los
@@ -30,7 +30,7 @@ const  ListComponent=({content}:any)=>{
             </ContainerCenter>
         ):
         <>
-      
+
         <div className='overflow-x-auto relative pt-10 h-full min-h-screen'>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">

@@ -6,7 +6,7 @@ export const SubbmitButton = ({name,className}:{name:string,className:string})=>
 
     return(
         <button className={className} disabled={isSubmitting} type="submit">
-            {isSubmitting ? <Loading color=''/> : name}
+            {isSubmitting ? <Loading/> : name}
         </button>
     )
 }
