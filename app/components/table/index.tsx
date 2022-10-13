@@ -4,7 +4,6 @@ import FormatDate from '~/utils/date_format';
 import type { AppointmentI } from '~/interfaces/appointment';
 import ContainerCenter from '../Container';
 import DeleteButton from '../ButtonDelete/indext';
-import FilterSmallValue from '~/utils/filter_small_value';
 
 
 const  ListComponent=({content}:any)=>{
@@ -17,17 +16,10 @@ const  ListComponent=({content}:any)=>{
     const [list,setList] = useState<AppointmentI[]>(content);
 
     useEffect(()=>  {
-        console.log(content)
         setList(content);
-    },[list,content])
+    },[content])
 
-    const UpdateList= ()=>{
-        const new_list =FilterSmallValue(list);
     
-
-        setList(new_list);
-    }
-
     return(
         <>
         {list?.length===0 ? (
@@ -38,12 +30,7 @@ const  ListComponent=({content}:any)=>{
             </ContainerCenter>
         ):
         <>
-        <button className="mt-10 mb-11" onClick={UpdateList}>
-            Início de agendamento mais recente
-        </button>
-        <button className="mb-11">
-            Fim de agendamento mais antigo
-        </button>
+      
         <div className='overflow-x-auto relative pt-10 h-full min-h-screen'>
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-500 dark:bg-gray-700 dark:text-gray-400">

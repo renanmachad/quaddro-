@@ -1,14 +1,21 @@
 // packages
 import { Form, useActionData} from "@remix-run/react"
 import { json} from "@remix-run/node";
- // components
+import * as Yup from 'yup';
+import { withYup } from "@remix-validated-form/with-yup";
+import { ValidatedForm } from 'remix-validated-form';
+// components
 import ContainerCenter from "~/components/Container";
 import { toast,Toaster } from 'react-hot-toast';
+import ButtonBack from "~/components/buttonBack";
+import {FormInput } from '../components/Input/index';
+
 // types 
 import type { ActionFunction } from "@remix-run/node";
 // services
 import { CreateAppointments } from "~/services/create_appointments";
-import ButtonBack from "~/components/buttonBack";
+import { validator } from "~/validator/form";
+import { SubbmitButton } from "~/components/buttonSubmit";
 
 
 
@@ -27,7 +34,7 @@ export const  action= async ({ request }:ActionFunction)=> {
         schedule_start:form.get('schedule_start'),
         schedule_end:form.get('schedule_end')
     });
-    console.log(errorExist, message)
+
     if(errorExist===true ) return json({ message, error:true})
   
     return json({ message:"Cadastrado com sucesso", error:false});
@@ -49,7 +56,7 @@ export default function Create(){
         toast.success('Agendamento realizado');
         setTimeout(function(){
             window.location.reload();
-        },3000)
+        },3000);
     }
     
     return(
@@ -59,27 +66,15 @@ export default function Create(){
                 Crie seu agendamento abaixo
             </h1>
             <ButtonBack/>
-             <Form className="flex justify-center items-center mx-auto h-screen" method="post">
-                    <label className="m-0" htmlFor="title">
-                        Título
-                    </label>
-                    
-                    <input id="title" name="title"type='text'/>
-                
-                    <label htmlFor="schedule_start">
-                        Início do agendamento
-                    </label>
-                    <input type="datetime-local" id="schedule_start" name="schedule_start"/>
-                
-                    <label htmlFor="schedule_end">
-                        Fim do agendamento
-                    </label>
-                    <input type="datetime-local" id="schedule_end" name="schedule_end"/>
-                
-                <button className="green-button" type="submit">
+             <ValidatedForm validator={validator} className="flex justify-center items-center mx-auto h-screen" method="post">
+                    <FormInput type="text" name="title" label="Título"/>
+                    <FormInput type="datetime-local" name="schedule_start" label="Início do agendamento"/>
+                    <FormInput type="datetime-local" name="schedule_end" label="Fim do agendamento"/>
+                   <SubbmitButton className="green-button mb-10" name="Criar agendamento"/>
+                {/* <button className="green-button" type="submit">
                    Criar agendamento
-                </button>
-            </Form>
+                </button> */}
+            </ValidatedForm>
         </ContainerCenter>
     )
 }

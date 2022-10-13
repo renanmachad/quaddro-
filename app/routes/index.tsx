@@ -1,11 +1,13 @@
 import { useEffect,useState } from "react";
 import type { AppointmentI } from "~/interfaces/appointment";
-import type { LinksFunction } from "@remix-run/node";
 import ContainerCenter from "~/components/Container";
 import  ListComponent  from '../components/table/index';
 import ListAppointment from "~/services/list_appointments";
-import { format } from 'date-fns';
+
 import { useNavigate } from "@remix-run/react"
+import FilterAscendingOrder from "~/utils/filter_descending_order";
+import FilterDescendingOrder from "~/utils/filter_ascending_order";
+import { FilterAlphabeticalTitle } from "~/utils/alphabetical_order";
 
 
 export default function Index() {
@@ -23,6 +25,19 @@ export default function Index() {
     Load();
   },[]);
 
+  async function UpdateAscending(){
+    setAppointments(await FilterAscendingOrder())
+    console.log('agendamento mais antigo',await FilterAscendingOrder())
+  }
+  async function UpdateDescending(){
+    setAppointments( await FilterDescendingOrder())
+      console.log('agendamento mais recente', await FilterDescendingOrder())
+  }
+
+  async function AlphabeticalTitle(){
+      setAppointments( await FilterAlphabeticalTitle());
+
+  }
   return (
     <ContainerCenter>
       {error &&(
@@ -39,6 +54,15 @@ export default function Index() {
       <button className="mb-11" onClick={()=>navigate('/search')} type="button">
           Buscar agendamento
       </button>
+        <button className="mt-10 mb-11" onClick={UpdateAscending}>
+            Início de agendamento em ordem crescente
+        </button>
+        <button className="mb-11" onClick={UpdateDescending}>
+            Início  de agendamento em ordem decrescente
+        </button>
+        <button className="mb-11" onClick={AlphabeticalTitle}>
+            Título em ordem alfabética
+        </button>
       <ListComponent content={appointments}/>
     </ContainerCenter>
   );

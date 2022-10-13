@@ -448,7 +448,7 @@ form {
 }
 
 input {
-  margin: 2.5rem;
+  margin: 1.75rem;
   width: 100%;
   border-radius: 0.75rem;
   padding: 1.25rem;
@@ -508,14 +508,22 @@ a {
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
   background-color: transparent;
   --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .green-button:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity));
+}
+
+.alert-error {
+  padding: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 
 *, ::before, ::after {
@@ -625,6 +633,10 @@ a {
   margin-right: auto;
 }
 
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+
 .mb-11 {
   margin-bottom: 2.75rem;
 }
@@ -635,6 +647,10 @@ a {
 
 .mt-10 {
   margin-top: 2.5rem;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .flex {
@@ -649,6 +665,10 @@ a {
   height: 100vh;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-full {
   height: 100%;
 }
@@ -659,6 +679,20 @@ a {
 
 .w-full {
   width: 100%;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
 .cursor-pointer {
@@ -683,6 +717,14 @@ a {
 
 .whitespace-nowrap {
   white-space: nowrap;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.border-4 {
+  border-width: 4px;
 }
 
 .border-b {
@@ -777,6 +819,10 @@ a {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 @media (prefers-color-scheme: dark) {
